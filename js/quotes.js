@@ -51,13 +51,3 @@ const todayQuotes = quotes[Math.floor(Math.random() * quotes.length)];
 
 quote.innerText = todayQuotes.quote;
 author.innerText = todayQuotes.author;
-
-// math module
-// math module 중 랜덤 function = random()
-// math.random() * 10 => 0에서 10사이의 숫자들을 얻을 수 있음
-// 소수점 값을 상수로 얻기 위한 math function 3가지
-// 1. math.round(); 반올림 처리
-// 2. math.ceil(); 올림 처리
-// 3. math.floor(); 내림처리
-
-//randomness
