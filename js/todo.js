@@ -2,18 +2,26 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.getElementById("todo-list");
 
+const TODO_KEY = "todos";
+
+let toDos = [];
+
+// 투두리스트 localStorage에 저장
+function saveToDos() {
+  localStorage.setItem(TODO_KEY, JSON.stringify(toDos));
+}
+
 // 투두리스트 제거
 function deleteToDo(event) {
   const li = event.target.parentElement;
-  // event의 속성중 html element인 타켓에서 parentElement(부모요소)인 속성의 값을 실행한다.
   li.remove();
 }
 
 // 투두리스트 생성
-function paintToDo(newToDo) {
+function paintToDo(newTodo) {
   const li = document.createElement("li");
   const span = document.createElement("span");
-  span.innerText = newToDo;
+  span.innerText = newTodo;
   const button = document.createElement("button");
   button.innerText = "삭제";
   button.addEventListener("click", deleteToDo);
@@ -24,9 +32,20 @@ function paintToDo(newToDo) {
 
 function handleToDoSubmit(event) {
   event.preventDefault();
-  const newToDo = toDoInput.value;
+  const newTodo = toDoInput.value;
   toDoInput.value = "";
-  paintToDo(newToDo); //paintToDo 라는 새로운 함수에 값을 보낸다.
+  toDos.push(newTodo);
+  paintToDo(newTodo);
+  saveToDos();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
+
+// 로컬스토리지에 저장된 데이터를 GET
+const savedToDos = localStorage.getItem(TODO_KEY);
+
+if (savedToDos !== null) {
+  const parsedToDos = JSON.parse(savedToDos);
+  toDos = parsedToDos;
+  parsedToDos.forEach(paintToDo);
+}
