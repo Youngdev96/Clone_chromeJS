@@ -11,7 +11,7 @@ function saveToDos() {
   localStorage.setItem(TODO_KEY, JSON.stringify(toDos));
 }
 
-// 투두리스트 제거
+// 투두리스트 화면상 제거
 function deleteToDo(event) {
   const li = event.target.parentElement;
   li.remove();
@@ -20,8 +20,9 @@ function deleteToDo(event) {
 // 투두리스트 생성
 function paintToDo(newTodo) {
   const li = document.createElement("li");
+  li.id = newTodo.id;
   const span = document.createElement("span");
-  span.innerText = newTodo;
+  span.innerText = newTodo.text;
   const button = document.createElement("button");
   button.innerText = "삭제";
   button.addEventListener("click", deleteToDo);
@@ -34,8 +35,12 @@ function handleToDoSubmit(event) {
   event.preventDefault();
   const newTodo = toDoInput.value;
   toDoInput.value = "";
-  toDos.push(newTodo);
-  paintToDo(newTodo);
+  const newToDoObj = {
+    text: newTodo,
+    id: Date.now(), // id로 각각의 li item 을 구별
+  };
+  toDos.push(newToDoObj);
+  paintToDo(newToDoObj);
   saveToDos();
 }
 
