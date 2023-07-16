@@ -15,6 +15,10 @@ function saveToDos() {
 function deleteToDo(event) {
   const li = event.target.parentElement;
   li.remove();
+  toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+  //toDo.id 와 li.id 의 데이터 타입이 다르기에 parseInt로 li.id를 number 데이터 타입으로 변환.
+  // toDo는 toDos DB에 있는 요소 중 하나.
+  saveToDos();
 }
 
 // 투두리스트 생성
@@ -37,7 +41,9 @@ function handleToDoSubmit(event) {
   toDoInput.value = "";
   const newToDoObj = {
     text: newTodo,
-    id: Date.now(), // id로 각각의 li item 을 구별
+    id: Date.now(),
+    // 삭제하기 위해선 text만 설정하는 것이 아니라 date.now로 고유한 값을 id에 넣어서
+    // 각각의 li item 을 구별
   };
   toDos.push(newToDoObj);
   paintToDo(newToDoObj);
