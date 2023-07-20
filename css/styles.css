@@ -1,4 +1,8 @@
+* {
+  margin: 10px;
+}
 body {
+  margin: 300px 100px;
   color: white;
 }
 .hidden {
@@ -15,4 +19,9 @@ img {
   bottom: 0px;
   z-index: -1;
   opacity: 90%;
+}
+#clock {
+  font-size: 150px;
+  font-weight: bold;
+  text-align: center;
 }
