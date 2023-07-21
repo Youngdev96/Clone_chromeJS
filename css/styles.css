@@ -1,9 +1,57 @@
+:root {
+  --color-white: #f4f0e6;
+  --color-main: var(--color-white);
+}
+
 * {
-  margin: 10px;
+  margin: 0;
+  text-align: center;
+}
+html {
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 body {
-  margin: 300px 100px;
-  color: white;
+  font-family: "Nanum Gothic", "Noto Sans KR", sans-serif;
+  color: var(--color-main);
+}
+
+#weather {
+  font-size: 0.8rem;
+  position: absolute;
+  top: 1%;
+  left: 85%;
+  display: flex;
+  gap: 15px;
+}
+
+#clock {
+  font-size: 13rem;
+  font-weight: bold;
+}
+
+#login-form {
+  padding-bottom: 2rem;
+}
+
+#quote {
+  font-size: 1.2rem;
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 15px;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
 }
 .hidden {
   display: none;
@@ -20,8 +68,58 @@ img {
   z-index: -1;
   opacity: 90%;
 }
-#clock {
-  font-size: 150px;
-  font-weight: bold;
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+#login-form input:first-child {
+  font-size: 1.8rem;
+  color: var(--color-main);
+  border: none;
+  background: transparent;
+  border-bottom: 4px dashed whitesmoke;
+}
+
+#login-form input:last-child {
+  display: none;
+}
+
+#todo-form input {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  border: none;
+  background: transparent;
+  border-bottom: 4px dashed whitesmoke;
+  color: var(--color-main);
+  width: 500px;
+  height: 40px;
+}
+
+input::placeholder {
+  color: var(--color-main);
+  font-style: italic;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  font-size: 1.2rem;
+  padding-bottom: 1rem;
+  text-align: justify;
+}
+
+li::marker {
+  display: inline-block;
   text-align: center;
+}
+
+li > button {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  padding: 0;
+  padding-right: 1rem;
 }
